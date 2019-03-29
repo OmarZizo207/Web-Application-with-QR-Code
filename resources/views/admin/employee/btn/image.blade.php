@@ -1,0 +1,1 @@
+<img style="width: 50px;height: 50px;border-radius: 50%" src="{{ Storage::url($employee_image) }}" alt="Logo">
