@@ -88,7 +88,7 @@ class RegisterController extends Controller
     
         User::create($data);
         session()->flash('success',trans('admin.record_added'));
-        return redirect('/login');
+        return redirect('/');
 
     }
 

@@ -35,5 +35,6 @@ return [
     'home'                 => 'Home',
     'logout'               => 'Logout',
     'vat'                  => 'VAT',
+    'check_table'          => 'Check Table',
 
 ];

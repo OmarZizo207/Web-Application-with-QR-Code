@@ -1,6 +1,5 @@
 @extends('style.index')
 @section('content')
-
 @push('js')
  <script type="text/javascript" src='https://maps.google.com/maps/api/js?libraries=places&key=AIzaSyBwxuW2cdXbL38w9dcPOXfGLmi1J7AVVB8'></script>
  <script type="text/javascript" src="{{ url('design/AdminLTE/dist/js/locationpicker.jquery.js') }}"></script>
@@ -73,7 +72,8 @@
     });
     <?php } ?>
    });
-</script>  
+
+</script>
 @endpush
 
 <div class="restaurant_image" style="margin: 200px 0 50px 0">
@@ -137,9 +137,10 @@
                                 <div class="media-body">
                                   <input type="hidden" name="item_id" id="item_id_<?php echo $count_items; ?>" value="{{ $item->id }}">
                                     <a href="{{ url('$item->id') }}"><h3>{{ $item->title }}</h3></a>
-                                    <h4>{{ $item->price }}</h4>
+                                    <h4>{{ $item->price }} L.E</h4>
                                     <label style="margin-left: 120px;"> Quantity </label> 
                                     <input type="number" name="quantity" id="quantity_<?php echo $count_items; ?>" style="width: 40px; float: right;margin-top: 10px;margin-right: 30px">
+
                                     <p> {{ $item->description }} </p>
                                     <a class="read_mor_btn" id="add_to_cart_<?php echo $count_items; ?>" href="#"> <i class="fa fa-cart"></i> Add To Cart</a>
                                     <ul>

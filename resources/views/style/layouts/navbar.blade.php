@@ -89,10 +89,15 @@
                             <li class="{{ active_nav('')[0] }}"><a href="{{ url('') }}"> <i class="fa fa-home"></i> {{ trans('user.home') }}</a></li>
                             <li class="{{ active_nav('restaurants')[0] }}"><a href="{{ url('restaurants') }}"> <i class="fas fa-utensils"></i> {{ trans('user.restaurants') }}</a></li>
                             <li class="{{ active_nav('about')[0] }}"><a href="{{ url('about') }}"><i class="fa fa-info"></i> {{ trans('user.about_us') }}</a></li>
-                            <li class="{{ active_nav('contact-us')[0] }}"><a href="{{ url('contact-us') }}"> <i class="fa fa-phone"></i> {{ trans('contact_us') }}</a></li>
+                            <li class="{{ active_nav('contact-us')[0] }}"><a href="{{ url('contact-us') }}"> <i class="fa fa-phone"></i> {{ trans('user.contact_us') }}</a></li>
 
                             @if(Auth::check())
-                            <li><a href="{{ url('logout') }}"><i class="fas fa-sign-in-alt"></i> {{ trans('user.logout') }} </a></li>
+                                <li class="dropdown submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ url('logout') }}"><i class="fas fa-sign-in-alt"></i> {{ trans('user.logout') }} </a></li>
+                                    </ul>
+                                </li>
                             @else
                             <li class="dropdown submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -103,7 +108,8 @@
                             </li>
                             @endif                            
 
-                            <li><a href="#" id="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <li>
+                                <a href="#" id="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                     <span class="badge">
                                      <?php
                                         if(!empty(auth()->user()->id)) {
@@ -113,7 +119,8 @@
                                             echo 0;
                                         }
                                      ?>
-                                    </span> </a></li>
+                                    </span> </a>
+                            </li>
                             
                             <li class="dropdown submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe"></i> <i class="fa fa-angle-down" aria-hidden="true"></i></a>

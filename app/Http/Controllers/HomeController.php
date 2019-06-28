@@ -68,4 +68,9 @@ class HomeController extends Controller
         $carts = Cart::all();
         return view('style.checkout',['carts' => $carts]);
     }
+
+    public function read_qrcode()
+    {
+        return view('style.qrpage');
+    }
 }

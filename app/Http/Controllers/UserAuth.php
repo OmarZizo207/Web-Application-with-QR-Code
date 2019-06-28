@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Carbon\Carbon;
-use DB;
 use Mail;
+use Illuminate\Support\Facades\DB;
 
 class UserAuth extends Controller
 {
@@ -26,9 +26,11 @@ class UserAuth extends Controller
     	return view('auth.passwords.email');
     }
 
-    public function forget_password_post()
+    public function forget_password_post(Request $request)
     {
-        $user = User::where('email', request('email'))->first();
+        $email = $request->input('email');
+        $user = User::where('email', $email)->first();
+        dd($user);
         if(!empty($user)) {
             $token = app('auth.password.broker')->createToken($user);
             $data  = DB::table('password_resets')->insert([

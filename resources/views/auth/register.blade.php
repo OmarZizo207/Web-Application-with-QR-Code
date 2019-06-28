@@ -10,10 +10,10 @@
    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
    
    <!-- Bootstrap -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+   {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">--}}
+   <link href="{{ url('design/style/css/bootstrap.min.css') }}" rel="stylesheet">
    
-   
-   <link rel="stylesheet" href="{{ url('design/style') }}/css/login/login.css">
+   <link rel="stylesheet" href="{{ url('design/style/css/login/login.css') }}">
 
 </head>
 <body>
@@ -26,7 +26,7 @@
 
          <!-- Brand Box -->
          <div class="col-sm-6 brand">
-            <a href="#" class="logo"> <img src="{{ Storage::url(setting()->icon) }}"> </a>
+            <a href="#" class="logo"> <img src="{{ Storage::url(setting()->logo) }}"> </a>
 
             <div class="heading">
                <h2>{{ lang() === 'ar' ? setting()->sitename_ar : setting()->sitename_en }}</h2>
@@ -41,27 +41,6 @@
 
          <!-- Form Box -->
          <div class="col-sm-6 form">
-            
-            <!-- Login Form -->
-            <div class="login form-peice switched">
-               <form class="login-form" action="{{ url('login') }}" method="post">
-                @csrf
-                  <div class="form-group">
-                     <label for="email">{{ trans('user.email_address') }}</label>
-                     <input type="email" name="email" value="{{ old('email') }}" id="loginemail" required>
-                  </div>
-
-                  <div class="form-group">
-                     <label for="password">{{ trans('user.password') }}</label>
-                     <input type="password" name="password" id="loginPassword" required>
-                  </div>
-
-                  <div class="CTA">
-                     <input type="submit" value="{{ trans('user.login') }}">
-                     <a href="#" class="switch">{{ trans('user.im_new') }}</a>
-                  </div>
-               </form>
-            </div><!-- End Login Form -->
 
 
             <!-- Signup Form -->
@@ -100,7 +79,7 @@
 
                   <div class="CTA">
                      <input type="submit" value="{{ trans('user.signup') }}" id="submit">
-                     <a href="#" class="switch">{{ trans('user.have_account') }}</a>
+                     <a href="{{ url('login') }}" class="switch">{{ trans('user.have_account') }}</a>
                   </div>
                </form>
             </div><!-- End Signup Form -->
@@ -112,14 +91,16 @@
 
    <footer>
       <p>
-         Form made by: <a href="http://mohmdhasan.tk" target="_blank">Mohmdhasan.tk</a>
+
       </p>
    </footer>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="{{ url('design/style') }}/js/login.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  --}}
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+<script src="{{ url('design/style/js/jquery-2.1.4.min.js') }}"></script>
+<script src="{{ url('design/style/js/bootstrap.min.js') }}/"></script>
+<script src="{{ url('design/style/js/login.js') }}"></script>
 </body>
 </html>
