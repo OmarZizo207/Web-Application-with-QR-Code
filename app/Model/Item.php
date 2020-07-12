@@ -22,6 +22,7 @@ class Item extends Model
     	'price_offer',
     	'start_offer_at',
     	'end_offer_at',
+        'calories',
     	'is_public',
     	'reason',
     	'other_data',
@@ -47,8 +48,13 @@ class Item extends Model
         return $this->hasOne('App\Model\Menu', 'id', 'menu_id');
     }
 
-    public function files() 
+    public function files()
     {
         return $this->hasMany('App\File', 'relation_id', 'id')->where('file_type','item');
     }
+
+//    public function scopeWhenSearch($query, $price_from, $price_to, $category)
+//    {
+//        return $query->when()
+//    }
 }

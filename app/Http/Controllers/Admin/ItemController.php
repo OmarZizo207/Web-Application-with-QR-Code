@@ -31,7 +31,7 @@ class ItemController extends Controller
     public function create()
     {
         $item = Item::create([
-            'title'         => '',              
+            'title'         => '',
         ]);
 
         if(!empty($item)) {
@@ -58,7 +58,7 @@ class ItemController extends Controller
             ]),
         ]);
         return response(['status' => true],200);
-    }    
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -73,7 +73,7 @@ class ItemController extends Controller
         ], [],[
             'title'                 => trans('admin.title'),
         ]);
-        
+
         Item::create($data);
         session()->flash('success',trans('admin.record_added'));
         return redirect(aurl('item'));
@@ -120,7 +120,7 @@ class ItemController extends Controller
 
     public function upload_file($id)
     {
-        if(request()->hasFile('file')) {    
+        if(request()->hasFile('file')) {
             $fid = up()->upload([
                 'file'          => 'file',
                 'path'          => 'items/' . $id,
@@ -134,7 +134,7 @@ class ItemController extends Controller
 
     public function delete_file()
     {
-        if(request()->has('id')) {    
+        if(request()->has('id')) {
             up()->delete_f(request('id'));
         }
     }
@@ -156,6 +156,7 @@ class ItemController extends Controller
             'price_offer'           => 'sometimes|nullable|numeric',
             'start_offer_at'        => 'sometimes|nullable|date|after:start_at',
             'end_offer_at'          => 'sometimes|nullable|date|before:end_at|after:start_offer_at',
+            'calories'              => 'sometimes|nullable|numeric',
             'is_public'             => 'sometimes|nullable|in:yes,no',
             'reason'                => 'sometimes|nullable',
             'other_data'            => 'sometimes|nullable'
@@ -173,6 +174,7 @@ class ItemController extends Controller
             'price_offer'           => trans('admin.price_offer'),
             'start_offer_at'        => trans('admin.start_offer_at'),
             'end_offer_at'          => trans('admin.end_offer_at'),
+            'calories'              => trans('admin.calories'),
             'is_public'             => trans('admin.is_public'),
             'reason'                => trans('admin.reason'),
             'other_data'            => trans('admin.other_data'),
@@ -210,7 +212,7 @@ class ItemController extends Controller
         $first_path = explode('/', $items->photo);
         $all_path = $first_path[0].'/'.$first_path[1];
         Storage::deleteDirectory($all_path);
-        /* This Delete is temp until find another solution */        
+        /* This Delete is temp until find another solution */
         $items->delete();
         session()->flash('success',trans('admin.deleted_record'));
         return redirect(aurl('item'));

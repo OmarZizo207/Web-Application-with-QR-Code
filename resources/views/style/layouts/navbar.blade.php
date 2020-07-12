@@ -1,9 +1,11 @@
+{{--@dd($carts)--}}
 @push('js')
     <script>
         $(document).ready(function(){
             <?php
             if(!empty(auth()->user()->id)) {
             $max_carts = count(App\Model\Cart::where('user_id', auth()->user()->id)->get());
+
                 for($i = 0; $i < $max_carts; $i++) { ?>
                 $('#successMsg_<?php echo $i; ?>').hide();
                     $(document).on('click', '#remove_cart_<?php echo $i; ?>', function () {
@@ -22,6 +24,8 @@
                             $('#successMsg_<?php echo $i; ?>').show();
                             $('#successMsg_<?php echo $i; ?>').append('{{ trans('user.item_deleted') }}');
                             $('#cart_{{ $i }}').fadeOut(500);
+                            let cart_count = parseInt($('.badge').html());
+                            $('.badge').html(cart_count-1);
                         },
                     });
                  return false;
@@ -31,7 +35,7 @@
     </script>
 @endpush
     <body>
-       
+
         <div id="preloader">
             <div class="loader absolute-center">
                 <div class="loader__box"><b class="top"></b></div>
@@ -96,6 +100,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-in-alt"></i> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ url('logout') }}"><i class="fas fa-sign-in-alt"></i> {{ trans('user.logout') }} </a></li>
+                                        <li><a href="{{ url('orders') }}"><i class="fa fa-cutlery"></i> {{ trans('user.orders') }} </a></li>
                                     </ul>
                                 </li>
                             @else
@@ -106,7 +111,7 @@
                                     <li><a href="{{ url('signup') }}"> <i class="fas fa-user-plus"></i> {{ trans('user.signup') }}</a></li>
                                 </ul>
                             </li>
-                            @endif                            
+                            @endif
 
                             <li>
                                 <a href="#" id="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -121,7 +126,7 @@
                                      ?>
                                     </span> </a>
                             </li>
-                            
+
                             <li class="dropdown submenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe"></i> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu">
@@ -172,15 +177,15 @@
 
                     <?php $count_carts = 0;
                     if(!empty(auth()->user()->id)){ ?>
-                    @foreach(App\Model\Cart::where('user_id', auth()->user()->id)->get() as $cart_item)
-                        <?php $details = item_details($cart_item->item_id); ?>
+
+                    @foreach(App\Model\Cart::with('items')->where('user_id', auth()->user()->id)->get() as $cart_item)
                         <li class="clearfix" id="cart_{{ $count_carts }}">
                             <input type="hidden" name="cart_id" id="cart_id_<?php echo $count_carts; ?>" value="{{ $cart_item->id }}">
-                            <img src="{{ Storage::url($details->photo) }}" alt="item1" />
-                            <span class="item-name"> {{ $details->title }} </span>
-                            <span class="item-price">{{ $details->price }}</span>
+                            <img src="{{ Storage::url($cart_item->items->photo) }}" alt="item1" />
+                            <span class="item-name"> {{ $cart_item->items->title }} </span>
+                            <span class="item-price">{{ $cart_item->items->price }}</span>
                             <span class="item-quantity">{{ trans('user.quantity') }}: {{ $cart_item->quantity }}</span> <br>
-                            <span class="item-price">{{ trans('user.total') }} : {{ $details->price *  $cart_item->quantity  }}</span> <br>
+                            <span class="item-price">{{ trans('user.total') }} : {{ $cart_item->items->price *  $cart_item->quantity  }}</span> <br>
                             <a href="{{ url('remove_cart/'.$cart_item->id) }}" class="btn btn-danger" id="remove_cart_<?php echo $count_carts; ?>"><i class="fas fa-trash"></i></a>
                             <div id="successMsg_<?php echo $count_carts; ?>" class='alert alert-danger' style="display: none"></div>
                         </li>

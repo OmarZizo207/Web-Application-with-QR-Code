@@ -2,7 +2,7 @@
 
 
 Route::group(['middleware' => 'Maintenance'], function(){
-	
+
 	Route::get('/', function () {
 		return view('style.home');
 	});
@@ -27,12 +27,15 @@ Route::group(['middleware' => 'Maintenance'], function(){
 
     Route::get('forget/password', 'Auth\ForgotPasswordController@showLinkRequestForm');
 	Route::post('forget/password', 'UserAuth@forget_password_post')->name('forget/password');
-	
+
+    Route::post('restaurants/{id}/search', 'HomeController@showMenu');
+
 	Route::get('reset/password/{token}', 'Auth\ResetPasswordController@reset_password');
 	Route::post('reset/password/{token}', 'Auth\ResetPasswordController@reset_password_final');
 
+
 	Route::group(['middleware' => 'auth'], function(){
-	
+
 	    Route::any('logout', 'Auth\LoginController@logout');
 
         Route::post('add_to_cart/{id}','HomeController@add_cart');
@@ -40,6 +43,14 @@ Route::group(['middleware' => 'Maintenance'], function(){
         Route::post('remove_cart/{id}', 'HomeController@remove_cart');
 
         Route::get('checkout', 'HomeController@show_checkout');
+
+        Route::get('/add_orders', 'HomeController@addOrders');
+
+        Route::get('/rate/{restaurant_id}', 'RateController@showRate');
+
+        Route::post('/rate/{restaurant_id}', 'RateController@rateRestaurant');
+
+        Route::get('orders', 'OrderController@showOrders');
 
         Route::get('check_qr', 'HomeController@read_qrcode');
 

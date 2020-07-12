@@ -12,7 +12,7 @@ $lng = !empty(old('lng')) ? old('lng') : '31.24238681793213';
    $('#us1').locationpicker({
     location: {
       latitude: {{ $lat }},
-      longitude: {{ $lng }}, 
+      longitude: {{ $lng }},
     },
     radius: 300,
     markerIcon: '{{ url("design/AdminLTE/dist/img/map_marker.png") }}',
@@ -34,10 +34,10 @@ $lng = !empty(old('lng')) ? old('lng') : '31.24238681793213';
   </div>
   <div class="box-body">
     {!! Form::open(['route' => 'restaurants.store','files' => true]) !!}
-      
+
       <input type="hidden" name="lat" value="{{ old('lat') }}" id='lat'>
-      <input type="hidden" name="lng" value="{{ old('lng') }}" id='lng'> 
-      
+      <input type="hidden" name="lng" value="{{ old('lng') }}" id='lng'>
+
       <div class="form-group">
         {!! Form::label('restaurant_name_ar',trans('admin.restaurant_name_ar')) !!}
         {!! Form::text('restaurant_name_ar',old('restaurant_name_ar'), ['class' => 'form-control']) !!}
@@ -66,6 +66,10 @@ $lng = !empty(old('lng')) ? old('lng') : '31.24238681793213';
       <div class="form-group">
         {!! Form::label('hotline',trans('admin.hotline')) !!}
         {!! Form::text('hotline',old('hotline'), ['class' => 'form-control']) !!}
+      </div>
+      <div class="form-group">
+          {!! Form::label('visa',trans('admin.visa_avaliable')) !!}
+          {!! Form::select('visa',[1 => trans('admin.yes'),0 => trans('admin.no')], old('visa'), ['class' => 'form-control visa']) !!}
       </div>
       <div class="form-group">
         {!! Form::label('restaurant_logo',trans('admin.restaurant_logo')) !!}

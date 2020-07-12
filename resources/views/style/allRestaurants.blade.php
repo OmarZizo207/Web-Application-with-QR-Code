@@ -9,6 +9,7 @@
                     <h2> <a href="{{ url('restaurants/'.$restaurant->id) }}" target="_blank"> {{ $restaurant->restaurant_name_en }} </a></h2>
                     <p> This restaurant Discription </p>
                 <p> {{ $restaurant->hotline }} </p>
+                    <a href="{{ url('rate/' . $restaurant->id) }}"> Rate this restaurant </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12" style="float: right">
                 <p style="color: #00A575; font-size: 20px;"> open </p>

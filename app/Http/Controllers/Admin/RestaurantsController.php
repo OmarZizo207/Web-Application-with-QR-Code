@@ -46,7 +46,8 @@ class RestaurantsController extends Controller
             'facebook_url'              => 'sometimes|nullable|url',
             'twitter_url'               => 'sometimes|nullable|url',
             'hotline'                   => 'required|numeric',
-            'restaurant_logo'           => validate_image()
+            'restaurant_logo'           => validate_image(),
+            'visa'                      => 'sometimes|nullable|numeric'
         ], [],[
             'restaurant_name_ar'        => trans('admin.restaurant_name_ar'),
             'restaurant_name_en'        => trans('admin.restaurant_name_en'),
@@ -54,12 +55,13 @@ class RestaurantsController extends Controller
             'lat'                       => trans('admin.lat'),
             'lng'                       => trans('admin.lng'),
             'facebook_url'              => trans('admin.facebook_url'),
-            'twitter_url'               => trans('admin.twitter_url'),           
+            'twitter_url'               => trans('admin.twitter_url'),
             'hotline'                   => trans('admin.hotline'),
             'restaurant_logo'           => trans('admin.restaurant_logo'),
+            'visa'                      => trans('admin.visa')
         ]);
         if(request()->hasFile('restaurant_logo')) {
-            
+
             $data['restaurant_logo'] = up()->upload([
                 // 'new_name'       => '',
                 'file'          => 'restaurant_logo',
@@ -68,7 +70,7 @@ class RestaurantsController extends Controller
                 'delete_file'   => '',
             ]);
         }
-    
+
         Restaurants::create($data);
         session()->flash('success',trans('admin.record_added'));
         return redirect(aurl('restaurants'));
@@ -116,7 +118,8 @@ class RestaurantsController extends Controller
             'facebook_url'              => 'sometimes|nullable|url',
             'twitter_url'               => 'sometimes|nullable|url',
             'hotline'                   => 'required|numeric',
-            'restaurant_logo'           => validate_image()
+            'restaurant_logo'           => validate_image(),
+            'visa'                      => 'sometimes|nullable|numeric'
         ], [],[
             'restaurant_name_ar'        => trans('admin.restaurant_name_ar'),
             'restaurant_name_en'        => trans('admin.restaurant_name_en'),
@@ -124,12 +127,13 @@ class RestaurantsController extends Controller
             'lat'                       => trans('admin.lat'),
             'lng'                       => trans('admin.lng'),
             'facebook_url'              => trans('admin.facebook_url'),
-            'twitter_url'               => trans('admin.twitter_url'),           
+            'twitter_url'               => trans('admin.twitter_url'),
             'hotline'                   => trans('admin.hotline'),
             'restaurant_logo'           => trans('admin.restaurant_logo'),
+            'visa'                      => trans('admin.visa'),
         ]);
         if(request()->hasFile('restaurant_logo')) {
-            
+
             $data['restaurant_logo'] = up()->upload([
                 // 'new_name'       => '',
                 'file'          => 'restaurant_logo',

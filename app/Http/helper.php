@@ -44,27 +44,27 @@ if(!function_exists('load_dep')) {
             $list_arr['a_attr']     = '';
             $list_arr['children']   = '';
             if($select !== null and $select == $department->id) {
-                
+
                 $list_arr['state']      = [
                     'opened'    => true,
                     'disabled'  => false,
                     'selected'  => true,
-                ];    
+                ];
             }
             if($dep_hide !== null and $dep_hide == $department->id) {
-                
+
                 $list_arr['state']      = [
                     'opened'    => false,
                     'disabled'  => true,
                     'selected'  => false,
                     'hidden'    => true,
-                ];    
+                ];
             }
             $list_arr['id']     = $department->id;
             $list_arr['parent'] = $department->parent !== null ? $department->parent : '#';
             $list_arr['text']   = $department->text;
             array_push($dep_arr,$list_arr);
-        }    
+        }
         return json_encode($dep_arr,JSON_UNESCAPED_UNICODE);
     }
 }

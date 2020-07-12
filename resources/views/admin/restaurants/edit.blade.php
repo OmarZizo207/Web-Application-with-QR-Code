@@ -10,7 +10,7 @@
    $('#us1').locationpicker({
     location: {
       latitude: {{ $restaurant->lat }},
-      longitude: {{ $restaurant->lng }}, 
+      longitude: {{ $restaurant->lng }},
     },
     radius: 300,
     markerIcon: '{{ url("design/AdminLTE/dist/img/map_marker.png") }}',
@@ -34,8 +34,8 @@
     {!! Form::open(['url' => aurl('restaurants/'.$restaurant->id), 'files' => true,'method' => 'put']) !!}
 
       <input type="hidden" name="lat" value="{{ old('lat') }}" id='lat'>
-      <input type="hidden" name="lng" value="{{ old('lng') }}" id='lng'> 
-      
+      <input type="hidden" name="lng" value="{{ old('lng') }}" id='lng'>
+
       <div class="form-group">
         {!! Form::label('restaurant_name_ar',trans('admin.restaurant_name_ar')) !!}
         {!! Form::text('restaurant_name_ar',$restaurant->restaurant_name_ar, ['class' => 'form-control']) !!}
@@ -66,11 +66,17 @@
         {!! Form::label('hotline',trans('admin.hotline')) !!}
         {!! Form::text('hotline',$restaurant->hotline, ['class' => 'form-control']) !!}
       </div>
+
+      <div class="form-group">
+          {!! Form::label('visa',trans('admin.visa_avaliable')) !!}
+          {!! Form::select('visa',[1 => trans('admin.yes'), 0 => trans('admin.no')], $restaurant->visa, ['class' => 'form-control visa']) !!}
+      </div>
+
       <div class="form-group">
         {!! Form::label('restaurant_logo',trans('admin.restaurant_logo')) !!}
         {!! Form::file('restaurant_logo', ['class' => 'form-control']) !!}
       @if(!empty(restaurants()->restaurant_logo))
-        <img src="{{ Storage::url(restaurants()->restaurant_logo) }}" 
+        <img src="{{ Storage::url(restaurants()->restaurant_logo) }}"
               style="height: 100px;width: 100px;border-radius: 50%; margin-top: 10px; " />
       @endif
       </div>

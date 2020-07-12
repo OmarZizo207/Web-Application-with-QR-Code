@@ -26,7 +26,7 @@
         {!! Form::label('price',trans('admin.item_price')) !!}
         {!! Form::text('price',$item->price, ['class' => 'form-control', 'placeholder' => trans('admin.item_price')]) !!}
       </div>
-      
+
       <div class="form-group col-ed-3 col-lg-3 col-sm-3 col-xs-12">
         {!! Form::label('start_at',trans('admin.start_at')) !!}
         {!! Form::text('start_at',$item->start_at, ['class' => 'form-control datepicker', 'autocomplete' => 'off', 'placeholder' => trans('admin.start_at')]) !!}
@@ -53,6 +53,11 @@
       </div>
 
       <div class="clearfix"></div>
+
+        <div class="form-group col-ed-6 col-lg-6 col-sm-6 col-xs-12">
+            {!! Form::label('calories',trans('admin.calories')) !!}
+            {!! Form::number('calories', $item->calories, ['class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => trans('admin.calories')]) !!}
+        </div>
 
       <div class="form-group">
         {!! Form::label('is_public',trans('admin.is_public')) !!}

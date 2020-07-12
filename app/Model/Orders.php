@@ -9,8 +9,13 @@ class Orders extends Model
     protected $table = 'orders';
 
     protected $fillable = [
-    	'user_id'
+    	'user_id',
     	'item_id',
     	'quantity'
     ];
+
+    public function items()
+    {
+        return $this->belongsTo(Item::class, 'item_id');
+    }
 }

@@ -17,7 +17,9 @@ class Restaurants extends Model
     	'facebook_url',
     	'twitter_url',
     	'hotline',
-    	'restaurant_logo', 
-    	
+    	'restaurant_logo',
+        'visa'
+
     ];
+
 }

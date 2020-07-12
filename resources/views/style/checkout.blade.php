@@ -20,12 +20,11 @@
             <ul class='order-list'>
                 <?php
                    if(!empty(auth()->user()->id)){ ?>
-                   @foreach(App\Model\Cart::where('user_id', auth()->user()->id)->get() as $cart_item)
-                   <?php $details = item_details($cart_item->item_id); ?>
+                   @foreach($carts as $cart_item)
                 <li>
-                    <img src='{{ Storage::url($details->photo) }}'>
-                    <h4>{{ $details->title }}</h4>
-                    <h5>{{ $details->price }}L.E</h5>
+                    <img src='{{ Storage::url($cart_item->items->photo) }}'>
+                    <h4>{{ $cart_item->items->title }}</h4>
+                    <h5>{{ $cart_item->items->price }}L.E</h5>
                     <h5> {{ trans('user.quantity') }} : {{ $cart_item->quantity }} </h5>
                 </li>
                  @endforeach
@@ -34,7 +33,7 @@
             <?php
             $total_price = 0;
             if(!empty(auth()->user()->id)) {
-                foreach(App\Model\Cart::where('user_id', auth()->user()->id)->get() as $cart_item){
+                foreach($carts as $cart_item){
                     $item_price = item_price($cart_item->item_id);
                     $item_quantity = $cart_item->quantity;
                     $total_price += $item_quantity * $item_price;

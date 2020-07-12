@@ -25,6 +25,7 @@ return [
 	'id'					=> 'ID',
 	'name'					=> 'Admin Name',
 	'email'					=> 'Admin Email',
+    'calories'              => 'Calories',
 	'password'				=> 'Admin Password',
 	'created_at'			=> 'Created at',
 	'updated_at'			=> 'Updated at',
@@ -153,7 +154,7 @@ return [
 	'items'					=> 'Products',
 	'item_title'			=> 'Product Title',
 	'item_content'			=> 'Product Content',
-	'item_description'		=> 'Product Description',	
+	'item_description'		=> 'Product Description',
 	'item_info'				=> 'Product Info',
 	'item_price'			=> 'Product Price',
 	'start_at'				=> 'Start at',
@@ -166,7 +167,7 @@ return [
 	'category_name_en'		=> 'Eng Category',
 	'category_name_ar'		=> 'Ar Category',
 	'price'					=> 'Price',
-	'choose_category'		=> 'Choose Category',		
+	'choose_category'		=> 'Choose Category',
 
 
 	'sProcessing'                  => 'Processing',

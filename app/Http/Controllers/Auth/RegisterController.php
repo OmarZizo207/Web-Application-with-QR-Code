@@ -63,7 +63,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    
+
     public function RegisterForm()
     {
         return view('auth.register');
@@ -74,7 +74,7 @@ class RegisterController extends Controller
         $data = $this->validate(request(),[
             'name'          => 'required|string|max:255',
             'email'         => 'required|email|unique:users|max:255',
-            'phone_number'  => 'sometimes|nullable|numeric',
+            'phone_number'  => 'required|min:11',
             'password'      => 'required|min:6',
             'passwordCon'   => 'required',
         ], [],[
@@ -85,7 +85,7 @@ class RegisterController extends Controller
             'passwordCon'   => trans('admin.password_confirmation'),
         ]);
         $data['password'] = Hash::make($data['password']);
-    
+
         User::create($data);
         session()->flash('success',trans('admin.record_added'));
         return redirect('/');

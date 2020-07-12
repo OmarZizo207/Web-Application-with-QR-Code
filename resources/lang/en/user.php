@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 	'your_right_choice'		=> 'YOUR RIGHT CHOICE',
@@ -36,5 +36,7 @@ return [
     'logout'               => 'Logout',
     'vat'                  => 'VAT',
     'check_table'          => 'Check Table',
+    'orders'               => 'Orders',
+    'make_checkout'        => 'Please Make checkout first and make new order'
 
 ];
