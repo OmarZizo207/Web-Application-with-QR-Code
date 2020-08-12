@@ -88,6 +88,6 @@ class AdminAuth extends Controller
     		return redirect(aurl());
     	} else {
     		return redirect(aurl('login'));
-    	}	
+    	}
     }
 }

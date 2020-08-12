@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use App\model\Orders;
+use App\Model\Table;
 use Illuminate\Http\Request;
 use App\User;
 use App\Model\Restaurants;
@@ -97,11 +98,12 @@ class HomeController extends Controller
         }
 
         $restaurant = Restaurants::findOrFail($restaurant_id);
+        $tables = Table::where('restaurant_id', $restaurant_id)->get();
 
         if($restaurant->visa == 1) {
-            return view('style.checkout',['carts' => $carts]);
+            return view('style.checkout',['carts' => $carts, 'tables' => $tables]);
         }
-        return view('style.cash', ['carts' => $carts]);
+        return view('style.cash', ['carts' => $carts, 'tables' => $tables]);
     }
 
     public function addOrders()
@@ -111,7 +113,8 @@ class HomeController extends Controller
             Orders::create([
                 'user_id'   => $cart->user_id,
                 'item_id'   => $cart->item_id,
-                'quantity'  => $cart->quantity
+                'quantity'  => $cart->quantity,
+                'table'     => \request('table')
             ]);
             $cart->delete();
         }

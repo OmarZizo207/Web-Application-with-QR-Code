@@ -14,9 +14,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UsersDatatable $admin)
+    public function index(UsersDatatable $user)
     {
-        return $admin->render('admin.users.index',['title'=> trans('admin.users_title')]);
+        return $user->render('admin.users.index',['title'=> trans('admin.users_title')]);
     }
 
     /**
@@ -51,7 +51,7 @@ class UsersController extends Controller
             'level'         => trans('admin.level'),
         ]);
         $data['password'] = bcrypt(request('password'));
-    
+
         User::create($data);
         session()->flash('success',trans('admin.record_added'));
         return redirect(aurl('users'));
@@ -100,13 +100,13 @@ class UsersController extends Controller
             'name'          => trans('admin.name'),
             'email'         => trans('admin.email'),
             'password'      => trans('admin.password'),
-            'phone_number'  => trans('admin.phone_number'),            
+            'phone_number'  => trans('admin.phone_number'),
             'level'         => trans('admin.level'),
         ]);
         if(request()->has('password')) {
             $data['password'] = bcrypt(request('password'));
         }
-    
+
         User::where('id', $id)->update($data);
         session()->flash('success',trans('admin.record_updated'));
         return redirect(aurl('users'));

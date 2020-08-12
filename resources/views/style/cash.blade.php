@@ -42,6 +42,22 @@
     </table>
 
 
+    <form action="{{ url('/add_orders') }}" method="get" style="padding-left: 50px;">
+
+        @csrf
+
+        <div class="">
+            <select name="table" class="select2" style="width: 200px;height: 50px;">
+                <option value=""> Choose Table </option>
+                @foreach($tables as $table)
+                    <option value="{{ $table->id }}"> {{ $table->table_name }} </option>
+                @endforeach
+            </select>
+        </div>
+        <input type="submit" value="Pay">
+    </form>
+
+
 
     <div id='paid' class='paid' style="text-align: center; margin: 30px">
         <svg  id='icon-paid' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 310.277 310.277" style="enable-background:new 0 0 310.277 310.277;" xml:space="preserve" width="180px" height="180px">
@@ -49,7 +65,6 @@
                 <path d="M155.139,0C69.598,0,0,69.598,0,155.139c0,85.547,69.598,155.139,155.139,155.139   c85.547,0,155.139-69.592,155.139-155.139C310.277,69.598,240.686,0,155.139,0z M144.177,196.567L90.571,142.96l8.437-8.437   l45.169,45.169l81.34-81.34l8.437,8.437L144.177,196.567z" fill="#3ac569"/>
             </g>
         </svg>
-        <h2> Pay Cash, please <a href="{{ url('/add_orders') }}">Click here to confirm the order</a> </h2>
         <h2>Thank you!</h2>
     </div>
 

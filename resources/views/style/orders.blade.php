@@ -21,6 +21,7 @@
             <th scope="col"> Item Name </th>
             <th scope="col"> Quantity </th>
             <th scope="col"> Price </th>
+            <th scope="col"> Table # </th>
             <th scope="col"> Date </th>
         </tr>
         </thead>
@@ -32,11 +33,13 @@
                 <td> {{ $order->items->title }} </td>
                 <td> {{ $order->quantity }} </td>
                 <td> {{ $order->quantity * $order->items->price }} </td>
+                <td> {{ $order->table }} </td>
                 <td> {{ $order->created_at }} </td>
             </tr>
             @php $total_price+= $order->quantity * $order->items->price @endphp
         @endforeach
         <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td>Total Price</td>

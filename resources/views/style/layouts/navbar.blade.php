@@ -8,7 +8,8 @@
 
                 for($i = 0; $i < $max_carts; $i++) { ?>
                 $('#successMsg_<?php echo $i; ?>').hide();
-                    $(document).on('click', '#remove_cart_<?php echo $i; ?>', function () {
+                    $(document).on('click', '#remove_cart_<?php echo $i; ?>', function (e) {
+                        e.preventDefault();
                     var cart_id_<?php echo $i; ?> = $('#cart_id_<?php echo $i; ?>').val();
 
                     $.ajax({

@@ -30,7 +30,7 @@ class UserAuth extends Controller
     {
         $email = $request->input('email');
         $user = User::where('email', $email)->first();
-        dd($user);
+//        dd($user);
         if(!empty($user)) {
             $token = app('auth.password.broker')->createToken($user);
             $data  = DB::table('password_resets')->insert([
@@ -77,6 +77,6 @@ class UserAuth extends Controller
     		return redirect(url('/'));
     	} else {
     		return redirect(url('login'));
-    	}	
+    	}
     }
 }

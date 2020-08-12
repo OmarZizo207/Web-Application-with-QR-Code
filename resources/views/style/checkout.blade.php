@@ -149,6 +149,7 @@
                     <input type='text' id='cardcvc' name='cardcvc' placeholder="123" pattern="\d*" title='CVC Code' />
                 </p>
                 <button class='button-cta' title='Confirm your purchase'><span>PURCHASE</span></button>
+                <h4><a href="{{ url('/add_orders') }}"> Pay Cash </a> </h4>
             </div>
         </div>
         <div id='paid' class='paid'>
