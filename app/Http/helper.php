@@ -124,7 +124,7 @@ if(!function_exists('lang')){
 		if(session()->has('lang')) {
             return session('lang');
         } else {
-            session()->put('lang',setting()->main_lang);
+            session()->put('lang', setting()->main_lang);
             return setting()->main_lang;
         }
 	}

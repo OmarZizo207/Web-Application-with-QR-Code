@@ -12,7 +12,8 @@ class Orders extends Model
     	'user_id',
     	'item_id',
     	'quantity',
-        'table'
+        'table',
+        'status'
     ];
 
     public function items()

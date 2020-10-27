@@ -142,7 +142,7 @@
                         <div class="col-md-12 col-lg-6">
                             <div class="media">
                                 <div class="media-left" style="width: 50px;height: 50px;">
-                                    <img src="{{ Storage::url($item->photo) }}" alt="meal_image">
+                                    <img src="{{ Storage::url($item->photo) }}" alt="meal_image" style="height: 200px;width: 200px">
                                 </div>
                                 <div class="media-body">
                                   <input type="hidden" name="item_id" id="item_id_<?php echo $count_items; ?>" value="{{ $item->id }}">

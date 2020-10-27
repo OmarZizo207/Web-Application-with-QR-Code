@@ -1,5 +1,10 @@
 <?php
 
+Route::match(['get','post'], 'webhook', 'MessengerController@index');
+
+Route::get('/test', function () {
+    return substr('order-1', 0, 5);
+});
 
 Route::group(['middleware' => 'Maintenance'], function(){
 

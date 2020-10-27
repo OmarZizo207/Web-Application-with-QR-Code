@@ -31,7 +31,7 @@ Dropzone.autoDiscover = false;
 					}
 				});
 			var fmock;
-			return (fmock = file.previewElement) != null ? fmock.parentNode.removeChild(file.previewElement): void 0;	
+			return (fmock = file.previewElement) != null ? fmock.parentNode.removeChild(file.previewElement): void 0;
 			},
 			init: function(){
 				@foreach($item->files()->get() as $file)
@@ -41,13 +41,13 @@ Dropzone.autoDiscover = false;
 						size: '{{ $file->size }}',
 						type: '{{ $file->mime_type }}',
 					};
-				this.emit('addedfile',mock);	
+				this.emit('addedfile',mock);
 				this.options.thumbnail.call(this,mock,'{{ url("storage/" .$file->full_file) }}');
 				$('.dz-progress').remove();
 				@endforeach
 
 				this.on('sending', function(file, xhr, formData){
-					formData.append('fid','');	
+					formData.append('fid','');
 					file.fid = '';
 				});
 
@@ -84,19 +84,19 @@ Dropzone.autoDiscover = false;
 					}
 				});
 			var fmock;
-			return (fmock = file.previewElement) != null ? fmock.parentNode.removeChild(file.previewElement): void 0;	
+			return (fmock = file.previewElement) != null ? fmock.parentNode.removeChild(file.previewElement): void 0;
 			},
 			init: function(){
 
 				@if(!empty($item->photo))
 				var mock = { name: '{{ $item->title }}', size: '', type: ''};
-				this.emit('addedfile',mock);	
+				this.emit('addedfile',mock);
 				this.options.thumbnail.call(this,mock,'{{ url("storage/".$item->photo) }}');
-				$('.dz-progress').remove();	
+				$('.dz-progress').remove();
 				@endif
 
 				this.on('sending', function(file, xhr, formData){
-					formData.append('fid','');	
+					formData.append('fid','');
 					file.fid = '';
 				});
 
@@ -110,14 +110,14 @@ Dropzone.autoDiscover = false;
 </script>
 <style type="text/css">
 	.dz-image img {
-		width: 100px,
+		width: 100px;
 		height: 100px;
 	}
 	#mainphoto {
 		width: 200px;
 		height: 205px;
 		min-height: 0px !important;
-	}  
+	}
 </style>
 @endpush
     <div id="item_media" class="tab-pane fade">
@@ -128,4 +128,4 @@ Dropzone.autoDiscover = false;
       <hr/>
       <center> <h3> {{ trans('admin.other_files') }} </h3> </center>
       <div class="dropzone" id="dropzonefileupload"></div>
-    </div>    
+    </div>

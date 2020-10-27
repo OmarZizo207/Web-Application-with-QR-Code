@@ -81,7 +81,7 @@
                                     data-splitin="none" 
                                     data-splitout="none" 
                                     data-responsive_offset="on" 
-                                    data-elementdelay="0.05" >Red Cayenne
+                                    data-elementdelay="0.05" >food order
                                 </div>
                                   <form method="post" class="form_id" action="">
                                 <div class="tp-caption third_text" 
